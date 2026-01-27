@@ -128,7 +128,7 @@ What started as a simple portfolio project became a practical exercise in **Secu
 
 This architecture demonstrates that **CMMC compliance** isn't just about writing policy documents—it's about designing systems that are secure by default.
 
-##What's NExt: Disaster Recovery and Compliance Checks
+## What's Next: Disaster Recovery and Compliance Checks ##
 
 1. I want to develop a robust and automated disaster recovery set up.  I want this site to be restored within minutes if it were ever to be removed.   My Git repository and a Bicep template will come into play.
 2. I want to script and automate compliance checks to make sure some basline security measures are taking place. Eventually, I'd like to scale this up to include live deployment blockers.  If any code is deployed with improper settings, than CI will be blocked until evaluation.
