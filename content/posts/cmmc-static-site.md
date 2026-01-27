@@ -9,15 +9,17 @@ summary: "How I architected a low-maintenance, high-security personal site."
 ## 1. Introduction: The Objective
 
 My goal here was to architect a low-maintenance, high-security personal site where I can demonstrate some projects I am working on.  
-I have a few reasons for doing so:
+
+I have a few reasons in doing so:
 
 * **Showcase my work to potential employers or people who want to contribute**
 * **Practice my design skills**
-* **Practice approaching technical problems from a GRC mindset, where intent, controls, and risk management are key**
-    * Go-based static generator.
-    * Simple, text-based content makes it incredibly easy to deploy via Git.
+* **Most importantly, learn how to approaching technical problems from a GRC mindset, where intent, controls, and risk management are key**
 
-I chose to use **Hugo**, a static site generator, and **Azure Static Web Apps** to reduce the attack surface often seen in traditional database-driven CMS platforms like WordPress. By eliminating the database and the server-side processing, I eliminated the most common vectors for SQL injection and remote code execution.
+On that last note, I used CMMC control mapping as the basis for selecting certain key features within my architecture.
+
+
+I chose to use **Hugo**, a static site generator, and **Azure Static Web Apps** to reduce the attack surface often seen in traditional database-driven CMS platforms like WordPress. By eliminating the database and the server-side processing. 
 
 ## 2. High-Level Architecture (The "System Security Plan")
 
@@ -37,7 +39,7 @@ I chose to use **Hugo**, a static site generator, and **Azure Static Web Apps** 
 
 ---
 
-## 3. Implementation Phase 1: The Secure Baseline (Local Environment)
+## 3. Implementation Phase 1: The Secure Baseline
 
 Before writing a single line of content, I needed to establish a trusted development environment. In GRC terms, we cannot ensure the integrity of the output (the website) if we cannot trust the input (the workstation).
 
@@ -45,7 +47,7 @@ Before writing a single line of content, I needed to establish a trusted develop
 I developed this site on a machine enforcing **Least Privilege**. Daily development occurs under a standard user account, with User Account Control (UAC) requiring separate administrative credentials for any system-level changes. This mitigates the risk of malicious software being executed if my standard user account were to be compromised.
 
 ### Version Control as Audit Trail (Non-Repudiation)
-I initialized a Git repository to serve as the single source of truth. Every change to the site—whether infrastructure configuration or blog content—is committed with a timestamp and author attribution. This satisfies the fundamental requirement of **Configuration Management**: knowing exactly who changed what, and when.
+I initialized a Git repository to serve as the single source of truth. Every change to the site, whether infrastructure configuration or blog content, is committed with a timestamp and author attribution. This satisfies the fundamental requirement of **Configuration Management**: knowing exactly who changed what, and when.
 
 ### Supply Chain Risk Management (Dependencies)
 CMMC Level 2 requires strict **Supply Chain Risk Management (SCRM)**. To satisfy this, I rejected the common practice of "copying and pasting" theme files. Instead, I used Git Submodules to pinpoint an exact, immutable version of the dependency.
@@ -56,14 +58,14 @@ git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git t
 ~~~
 
 **Why this command matters:**
-* **Integrity:** It locks the site to a specific commit hash. This prevents "upstream drift" where a theme developer's changes could silently break the site or introduce vulnerabilities without my review.
-* **Reproducibility:** The `--depth=1` flag creates a "shallow clone," ensuring I am pulling only the necessary code artifact without the entire history, reducing the storage footprint and attack surface.
+* **Integrity:** It locks the site to a specific commit hash. This prevents "upstream drift" where a theme developer's changes could silently break the site or introduce vulnerabilities.
+* **Reproducibility:** The `--depth=1` flag creates a "shallow clone," ensuring I am pulling only the necessary code artifact without the entire history.
 
 ---
 
 ## 4. Implementation Phase 2: Automated Deployment (CI/CD)
 
-The core tenet of modern DevOps—and compliant systems—is that humans should not touch production servers. Manual file uploads (FTP) are prone to error and lack auditability. To solve this, I implemented a **Continuous Integration/Continuous Deployment (CI/CD)** pipeline using GitHub Actions and Azure Static Web Apps.
+As a sysadmin transitoning into devops workflows, I am focusing on automation.  Humans should not touch production servers. To solve this, I implemented a **Continuous Integration/Continuous Deployment (CI/CD)** pipeline using GitHub Actions and Azure Static Web Apps.
 
 ### The Pipeline as Gatekeeper (Change Control)
 I configured Azure to act as the build agent. When I push code to the `main` branch, a GitHub Action triggers automatically. It performs a "clean build" of the site in a temporary container.
@@ -71,7 +73,7 @@ I configured Azure to act as the build agent. When I push code to the `main` bra
 * **If the build fails:** The pipeline stops. The production site remains untouched.
 * **If the build passes:** The artifacts are deployed to the Azure content network.
 
-This workflow satisfies **NIST 800-171 (3.4.8 - Apply Deny-by-Exception)**. Invalid configurations are rejected before they ever reach the public.
+Invalid configurations are rejected before they ever reach the public.
 
 ### Troubleshooting "Dependency Hell" (Configuration Management)
 During the initial deployment, the pipeline failed. The build logs indicated a version mismatch: my local environment was using Hugo `0.146.0` (required by the theme), but the default Azure build agent was running `0.124.0`.
@@ -88,7 +90,7 @@ In a traditional environment, a sysadmin might manually log into the server to u
 ~~~
 
 **The GRC Takeaway:**
-By declaring the version in the pipeline configuration, I eliminated "Configuration Drift." The build environment is now **idempotent**—it will behave exactly the same way today as it will in six months, regardless of what defaults Microsoft changes in the background.
+By declaring the version in the pipeline configuration, I eliminated "Configuration Drift." The build environment is now **idempotent**.  It will behave exactly the same way today as it will in six months, regardless of what defaults Microsoft changes in the background.
 
 ---
 
@@ -125,3 +127,8 @@ What started as a simple portfolio project became a practical exercise in **Secu
 3.  **Zero-Touch Production:** Humans do not have write access to the live environment.
 
 This architecture demonstrates that **CMMC compliance** isn't just about writing policy documents—it's about designing systems that are secure by default.
+
+##What's NExt: Disaster Recovery and Compliance Checks
+
+1. I want to develop a robust and automated disaster recovery set up.  I want this site to be restored within minutes if it were ever to be removed.   My Git repository and a Bicep template will come into play.
+2. I want to script and automate compliance checks to make sure some basline security measures are taking place. Eventually, I'd like to scale this up to include live deployment blockers.  If any code is deployed with improper settings, than CI will be blocked until evaluation.
