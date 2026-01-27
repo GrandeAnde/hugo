@@ -3,12 +3,19 @@ title: "Building a CMMC-Ready Portfolio: A GitOps Approach"
 date: 2026-01-27
 draft: false
 tags: ["GRC", "Azure", "DevOps", "CMMC"]
-summary: "How I architected a low-maintenance, high-security personal site that inherently satisfies NIST 800-171 controls."
+summary: "How I architected a low-maintenance, high-security personal site.
 ---
 
 ## 1. Introduction: The Objective
 
-The goal was to architect a low-maintenance, high-security personal site that inherently satisfies **NIST 800-171** controls for Configuration Management and Access Control.
+My goal here was to architect a low-maintenance, high-security personal site where I can demonstrate some projects I am working on.  
+I have a few reasons for doing so:
+
+* **Showcase my work to potential employers or people who want to contribute**
+* **Practice my design skills**
+* **Practice approaching technical problems from a GRC mindset, where intent, controls, and risk management are key**
+    * Go-based static generator.
+    * Simple, text-based content makes it incredibly easy to deploy via Git.
 
 I chose to use **Hugo**, a static site generator, and **Azure Static Web Apps** to reduce the attack surface often seen in traditional database-driven CMS platforms like WordPress. By eliminating the database and the server-side processing, I eliminated the most common vectors for SQL injection and remote code execution.
 
