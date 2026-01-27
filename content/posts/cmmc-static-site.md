@@ -8,18 +8,18 @@ summary: "How I architected a low-maintenance, high-security personal site."
 
 ## 1. Introduction: The Objective
 
-My goal here was to architect a low-maintenance, high-security personal site where I can demonstrate some projects I am working on.  
+I've been wanting to make a personal blog for some time.  I find them a unique window into the authors personality and they have a level of familiarity that is often lost on linkedin. 
 
-I have a few reasons in doing so:
+I went back and forth about hosting a public website, because there are so many options.  Coming from a traditional sysadmin backround, I of course went down the LAMP road, but ultimately decided on a cloud first infrastructure for the following reasons:  
 
-* **Showcase my work to potential employers or people who want to contribute**
-* **Practice my design skills**
-* **Most importantly, learn how to approaching technical problems from a GRC mindset, where intent, controls, and risk management are key**
+* ** Risk Context:** *
+ Hosting a public web presence using traditional on-premise infrastructure or dynamic Content Management Systems (CMS) creates a broad attack surface, requiring continuous patch management.  Ain't nobody got time for that. 
 
-On that last note, I used CMMC control mapping as the basis for selecting certain key features within my architecture.
+* ** Operational Impact:** *  
+A compromise of this infrastructure would result in significant reputational damage.  Best case scenario, someone defaces my page.  Worst case scenario, someone uses my page as a vector to spread malicious malware.  Either way, it would result in an ndermining my credibility as a security practitioner.
 
-
-I chose to use **Hugo**, a static site generator, and **Azure Static Web Apps** to reduce the attack surface often seen in traditional database-driven CMS platforms like WordPress. By eliminating the database and the server-side processing. 
+* ** Mitigation Strategy:** * 
+To reduce this risk to an acceptable level, I implemented an Attack Surface Reduction strategy by utilizing Azure PaaS (Static Web Apps) and Hugo Static Site Generator. This architecture eliminates the infrastructure vector entirely and shifts the burden of underlying infrastructure security to the Cloud Provider (thank you, Shared Responsibility Model). Integrity is enforced via GitOps, ensuring that no unauthorized changes can occur outside of the approved CI/CD pipeline. 
 
 ## 2. High-Level Architecture (The "System Security Plan")
 
