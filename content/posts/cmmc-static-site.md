@@ -12,13 +12,13 @@ I've been wanting to make a personal blog for some time.  I find them a unique w
 
 I went back and forth about hosting a public website, because there are so many options.  Coming from a traditional sysadmin backround, I of course went down the LAMP road, but ultimately decided on a cloud first infrastructure for the following reasons:  
 
-* ** Risk Context:** *
+* **Risk Context:**
  Hosting a public web presence using traditional on-premise infrastructure or dynamic Content Management Systems (CMS) creates a broad attack surface, requiring continuous patch management.  Ain't nobody got time for that. 
 
-* ** Operational Impact:** *  
+* **Operational Impact:**  
 A compromise of this infrastructure would result in significant reputational damage.  Best case scenario, someone defaces my page.  Worst case scenario, someone uses my page as a vector to spread malicious malware.  Either way, it would result in an ndermining my credibility as a security practitioner.
 
-* ** Mitigation Strategy:** * 
+* **Mitigation Strategy:** 
 To reduce this risk to an acceptable level, I implemented an Attack Surface Reduction strategy by utilizing Azure PaaS (Static Web Apps) and Hugo Static Site Generator. This architecture eliminates the infrastructure vector entirely and shifts the burden of underlying infrastructure security to the Cloud Provider (thank you, Shared Responsibility Model). Integrity is enforced via GitOps, ensuring that no unauthorized changes can occur outside of the approved CI/CD pipeline. 
 
 ## 2. High-Level Architecture (The "System Security Plan")
