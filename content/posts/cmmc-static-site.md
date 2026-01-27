@@ -3,7 +3,7 @@ title: "Building a CMMC-Ready Portfolio: A GitOps Approach"
 date: 2026-01-27
 draft: false
 tags: ["GRC", "Azure", "DevOps", "CMMC"]
-summary: "How I architected a low-maintenance, high-security personal site.
+summary: "How I architected a low-maintenance, high-security personal site."
 ---
 
 ## 1. Introduction: The Objective
