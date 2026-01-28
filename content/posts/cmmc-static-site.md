@@ -36,7 +36,7 @@ To reduce this risk to an acceptable level, I implemented an Attack Surface Redu
 
 
 
-![Architecture Diagram](/gitopsflow.png)
+![Architecture Diagram](/githubci.png)
 *Figure 1: High-Level Architecture demonstrating Separation of Duties and Edge Protection.*
 
 ---

@@ -6,8 +6,15 @@
     <description>Recent content on Andy Gallegos</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 23 Jan 2026 12:21:38 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a CMMC-Ready Portfolio: A GitOps Approach</title>
+      <link>http://localhost:1313/posts/cmmc-static-site/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/cmmc-static-site/</guid>
+      <description>How I architected a low-maintenance, high-security personal site.</description>
+    </item>
     <item>
       <title>Hello World</title>
       <link>http://localhost:1313/posts/hello-world/</link>

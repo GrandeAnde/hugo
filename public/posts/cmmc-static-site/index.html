@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Building a CMMC-Ready Portfolio: A GitOps Approach | Andy Gallegos</title>
+<meta name="keywords" content="GRC, Azure, DevOps, CMMC">
+<meta name="description" content="How I architected a low-maintenance, high-security personal site.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/cmmc-static-site/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/cmmc-static-site/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Andy Gallegos (Alt + H)">Andy Gallegos</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Building a CMMC-Ready Portfolio: A GitOps Approach
+    </h1>
+    <div class="post-meta"><span title='2026-01-27 00:00:00 +0000 UTC'>January 27, 2026</span>&nbsp;·&nbsp;<span>7 min</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="1-introduction-the-objective">1. Introduction: The Objective<a hidden class="anchor" aria-hidden="true" href="#1-introduction-the-objective">#</a></h2>
+<p>I&rsquo;ve been wanting to make a personal blog for some time.  I find them a unique window into the authors personality and they have a level of familiarity that is often lost on linkedin.</p>
+<p>I went back and forth about hosting a public website, because there are so many options.  Coming from a traditional sysadmin backround, I of course went down the LAMP road, but ultimately decided on a cloud first infrastructure for the following reasons:</p>
+<ul>
+<li>
+<p><strong>Risk Context:</strong>
+Hosting a public web presence using traditional on-premise infrastructure or dynamic Content Management Systems (CMS) creates a broad attack surface, requiring continuous patch management.  Ain&rsquo;t nobody got time for that.</p>
+</li>
+<li>
+<p><strong>Operational Impact:</strong><br>
+A compromise of this infrastructure would result in significant reputational damage.  Best case scenario, someone defaces my page.  Worst case scenario, someone uses my page as a vector to spread malicious malware.  Either way, it would result in an ndermining my credibility as a security practitioner.</p>
+</li>
+<li>
+<p><strong>Mitigation Strategy:</strong>
+To reduce this risk to an acceptable level, I implemented an Attack Surface Reduction strategy by utilizing Azure PaaS (Static Web Apps) and Hugo Static Site Generator. This architecture eliminates the infrastructure vector entirely and shifts the burden of underlying infrastructure security to the Cloud Provider (thank you, Shared Responsibility Model). Integrity is enforced via GitOps, ensuring that no unauthorized changes can occur outside of the approved CI/CD pipeline.</p>
+</li>
+</ul>
+<h2 id="2-high-level-architecture-the-system-security-plan">2. High-Level Architecture (The &ldquo;System Security Plan&rdquo;)<a hidden class="anchor" aria-hidden="true" href="#2-high-level-architecture-the-system-security-plan">#</a></h2>
+<h3 id="core-components">Core Components<a hidden class="anchor" aria-hidden="true" href="#core-components">#</a></h3>
+<ul>
+<li><strong>Compute: Azure Static Web Apps</strong>
+<ul>
+<li>Serverless, PaaS architecture.</li>
+<li>Easy to create and back up via Infrastructure as Code (Bicep).</li>
+</ul>
+</li>
+<li><strong>Edge Security: Cloudflare</strong>
+<ul>
+<li>Provides DNS management, DDoS Protection, and TLS 1.2+ enforcement.</li>
+<li>Scalable to additional security services (WAF) if needed.</li>
+</ul>
+</li>
+<li><strong>Engine: Hugo</strong>
+<ul>
+<li>Go-based static generator.</li>
+<li>Simple, text-based content makes it incredibly easy to deploy via Git.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Architecture Diagram" loading="lazy" src="/githubci.png">
+<em>Figure 1: High-Level Architecture demonstrating Separation of Duties and Edge Protection.</em></p>
+<hr>
+<h2 id="3-implementation-phase-1-the-secure-baseline">3. Implementation Phase 1: The Secure Baseline<a hidden class="anchor" aria-hidden="true" href="#3-implementation-phase-1-the-secure-baseline">#</a></h2>
+<p>Before writing a single line of content, I needed to establish a trusted development environment. In GRC terms, we cannot ensure the integrity of the output (the website) if we cannot trust the input (the workstation).</p>
+<h3 id="the-trusted-workstation-access-control">The Trusted Workstation (Access Control)<a hidden class="anchor" aria-hidden="true" href="#the-trusted-workstation-access-control">#</a></h3>
+<p>I developed this site on a machine enforcing <strong>Least Privilege</strong>. Daily development occurs under a standard user account, with User Account Control (UAC) requiring separate administrative credentials for any system-level changes. This mitigates the risk of malicious software being executed if my standard user account were to be compromised.</p>
+<h3 id="version-control-as-audit-trail-non-repudiation">Version Control as Audit Trail (Non-Repudiation)<a hidden class="anchor" aria-hidden="true" href="#version-control-as-audit-trail-non-repudiation">#</a></h3>
+<p>I initialized a Git repository to serve as the single source of truth. Every change to the site, whether infrastructure configuration or blog content, is committed with a timestamp and author attribution. This satisfies the fundamental requirement of <strong>Configuration Management</strong>: knowing exactly who changed what, and when.</p>
+<h3 id="supply-chain-risk-management-dependencies">Supply Chain Risk Management (Dependencies)<a hidden class="anchor" aria-hidden="true" href="#supply-chain-risk-management-dependencies">#</a></h3>
+<p>CMMC Level 2 requires strict <strong>Supply Chain Risk Management (SCRM)</strong>. To satisfy this, I rejected the common practice of &ldquo;copying and pasting&rdquo; theme files. Instead, I used Git Submodules to pinpoint an exact, immutable version of the dependency.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Adding the theme as a submodule to ensure integrity</span>
+</span></span><span style="display:flex;"><span>git submodule add --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+</span></span></code></pre></div><p><strong>Why this command matters:</strong></p>
+<ul>
+<li><strong>Integrity:</strong> It locks the site to a specific commit hash. This prevents &ldquo;upstream drift&rdquo; where a theme developer&rsquo;s changes could silently break the site or introduce vulnerabilities.</li>
+<li><strong>Reproducibility:</strong> The <code>--depth=1</code> flag creates a &ldquo;shallow clone,&rdquo; ensuring I am pulling only the necessary code artifact without the entire history.</li>
+</ul>
+<hr>
+<h2 id="4-implementation-phase-2-automated-deployment-cicd">4. Implementation Phase 2: Automated Deployment (CI/CD)<a hidden class="anchor" aria-hidden="true" href="#4-implementation-phase-2-automated-deployment-cicd">#</a></h2>
+<p>As a sysadmin transitoning into devops workflows, I am focusing on automation.  Humans should not touch production servers. To solve this, I implemented a <strong>Continuous Integration/Continuous Deployment (CI/CD)</strong> pipeline using GitHub Actions and Azure Static Web Apps.</p>
+<h3 id="the-pipeline-as-gatekeeper-change-control">The Pipeline as Gatekeeper (Change Control)<a hidden class="anchor" aria-hidden="true" href="#the-pipeline-as-gatekeeper-change-control">#</a></h3>
+<p>I configured Azure to act as the build agent. When I push code to the <code>main</code> branch, a GitHub Action triggers automatically. It performs a &ldquo;clean build&rdquo; of the site in a temporary container.</p>
+<ul>
+<li><strong>If the build fails:</strong> The pipeline stops. The production site remains untouched.</li>
+<li><strong>If the build passes:</strong> The artifacts are deployed to the Azure content network.</li>
+</ul>
+<p>Invalid configurations are rejected before they ever reach the public.</p>
+<h3 id="troubleshooting-dependency-hell-configuration-management">Troubleshooting &ldquo;Dependency Hell&rdquo; (Configuration Management)<a hidden class="anchor" aria-hidden="true" href="#troubleshooting-dependency-hell-configuration-management">#</a></h3>
+<p>During the initial deployment, the pipeline failed. The build logs indicated a version mismatch: my local environment was using Hugo <code>0.146.0</code> (required by the theme), but the default Azure build agent was running <code>0.124.0</code>.</p>
+<p>In a traditional environment, a sysadmin might manually log into the server to upgrade the software. In a GitOps workflow, this is forbidden. Instead, I enforced the configuration via code. I updated the workflow YAML file to explicitly define the build environment:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build And Deploy</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">Azure/static-web-apps-deploy@v1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">app_build_command</span>: <span style="color:#e6db74">&#34;hugo&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">HUGO_VERSION</span>: <span style="color:#e6db74">&#34;0.146.0&#34;</span> <span style="color:#75715e"># Enforcing the specific dependency version</span>
+</span></span></code></pre></div><p><strong>The GRC Takeaway:</strong>
+By declaring the version in the pipeline configuration, I eliminated &ldquo;Configuration Drift.&rdquo; The build environment is now <strong>idempotent</strong>.  It will behave exactly the same way today as it will in six months, regardless of what defaults Microsoft changes in the background.</p>
+<hr>
+<h2 id="5-implementation-phase-3-edge-protection-dns--identity">5. Implementation Phase 3: Edge Protection (DNS &amp; Identity)<a hidden class="anchor" aria-hidden="true" href="#5-implementation-phase-3-edge-protection-dns--identity">#</a></h2>
+<p>For the final layer of the architecture, I focused on <strong>System and Communications Protection (SC)</strong> by utilizing Cloudflare as the DNS provider and edge proxy.</p>
+<h3 id="availability--ddos-mitigation">Availability &amp; DDoS Mitigation<a hidden class="anchor" aria-hidden="true" href="#availability--ddos-mitigation">#</a></h3>
+<p>I configured Cloudflare to proxy all traffic before it reaches Azure. This hides the actual &ldquo;Origin&rdquo; IP address of the Azure resource.</p>
+<ul>
+<li><strong>The Sysadmin View:</strong> This solves the technical challenge of &ldquo;CNAME Flattening,&rdquo; allowing me to point the root domain (<code>andygallegos.com</code>) directly to an Azure FQDN, which standard DNS does not support.</li>
+<li><strong>The GRC View:</strong> This acts as a shield. Cloudflare absorbs Layer 3/4 Distributed Denial of Service (DDoS) attacks at the edge, ensuring <strong>Availability</strong> (one of the three pillars of the CIA Triad) remains high even under stress.</li>
+</ul>
+<h3 id="data-in-transit-encryption">Data in Transit (Encryption)<a hidden class="anchor" aria-hidden="true" href="#data-in-transit-encryption">#</a></h3>
+<p>To satisfy <strong>NIST 800-171 (SC.L2-3.13.8 - Cryptographic Protection)</strong>, I enforced strict TLS 1.2+ encryption.</p>
+<ul>
+<li><strong>Client to Edge:</strong> Cloudflare enforces HTTPS for all visitors.</li>
+<li><strong>Edge to Origin:</strong> I configured &ldquo;Full (Strict)&rdquo; encryption, ensuring that traffic between Cloudflare and Azure is also encrypted using a trusted CA certificate. There is no point in the transmission path where data travels in plain text.</li>
+</ul>
+<h3 id="residual-risk--mitigation">Residual Risk &amp; Mitigation<a hidden class="anchor" aria-hidden="true" href="#residual-risk--mitigation">#</a></h3>
+<p>While Cloudflare protects the primary domain, the direct Azure default URL (<code>*.azurestaticapps.net</code>) remains publicly accessible due to the limitations of the Azure Static Web Apps &ldquo;Free&rdquo; tier. In a production enterprise environment, I would mitigate this by upgrading to the Standard plan and implementing <strong>IP Restrictions</strong> to whitelist <em>only</em> Cloudflare&rsquo;s IP ranges, effectively &ldquo;locking the origin.&rdquo;</p>
+<h3 id="domain-validation-identity">Domain Validation (Identity)<a hidden class="anchor" aria-hidden="true" href="#domain-validation-identity">#</a></h3>
+<p>Before Azure would serve traffic for my domain, I had to prove ownership via a DNS TXT record. This challenge-response mechanism prevents <strong>Subdomain Takeover</strong> attacks, ensuring that only authorized administrators can bind the organization&rsquo;s domain to a cloud resource.</p>
+<hr>
+<h2 id="conclusion-the-compliance-audit">Conclusion: The &ldquo;Compliance&rdquo; Audit<a hidden class="anchor" aria-hidden="true" href="#conclusion-the-compliance-audit">#</a></h2>
+<p>What started as a simple portfolio project became a practical exercise in <strong>Secure Systems Engineering</strong>. By shifting from a traditional &ldquo;manage the server&rdquo; mindset to a &ldquo;manage the code&rdquo; mindset, I achieved:</p>
+<ol>
+<li><strong>Auditable Change Management:</strong> Every modification is version-controlled and attributed.</li>
+<li><strong>Idempotent Deployment:</strong> The infrastructure can be rebuilt instantly with identical results.</li>
+<li><strong>Zero-Touch Production:</strong> Humans do not have write access to the live environment.</li>
+</ol>
+<p>This architecture demonstrates that <strong>CMMC compliance</strong> isn&rsquo;t just about writing policy documents—it&rsquo;s about designing systems that are secure by default.</p>
+<h2 id="whats-next-disaster-recovery-and-compliance-checks">What&rsquo;s Next: Disaster Recovery and Compliance Checks<a hidden class="anchor" aria-hidden="true" href="#whats-next-disaster-recovery-and-compliance-checks">#</a></h2>
+<ol>
+<li>I want to develop a robust and automated disaster recovery set up.  I want this site to be restored within minutes if it were ever to be removed.   My Git repository and a Bicep template will come into play.</li>
+<li>I want to script and automate compliance checks to make sure some basline security measures are taking place. Eventually, I&rsquo;d like to scale this up to include live deployment blockers.  If any code is deployed with improper settings, than CI will be blocked until evaluation.</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/grc/">GRC</a></li>
+      <li><a href="http://localhost:1313/tags/azure/">Azure</a></li>
+      <li><a href="http://localhost:1313/tags/devops/">DevOps</a></li>
+      <li><a href="http://localhost:1313/tags/cmmc/">CMMC</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="http://localhost:1313/posts/hello-world/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Hello World</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Andy Gallegos</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

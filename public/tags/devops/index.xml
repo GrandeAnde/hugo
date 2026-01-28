@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Blog on Andy Gallegos</title>
-    <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Blog on Andy Gallegos</description>
+    <title>DevOps on Andy Gallegos</title>
+    <link>http://localhost:1313/tags/devops/</link>
+    <description>Recent content in DevOps on Andy Gallegos</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en</language>
     <lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building a CMMC-Ready Portfolio: A GitOps Approach</title>
       <link>http://localhost:1313/posts/cmmc-static-site/</link>
       <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/cmmc-static-site/</guid>
       <description>How I architected a low-maintenance, high-security personal site.</description>
-    </item>
-    <item>
-      <title>Hello World</title>
-      <link>http://localhost:1313/posts/hello-world/</link>
-      <pubDate>Fri, 23 Jan 2026 12:21:38 -0500</pubDate>
-      <guid>http://localhost:1313/posts/hello-world/</guid>
-      <description>&lt;p&gt;this is my first post.  surprise!&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
