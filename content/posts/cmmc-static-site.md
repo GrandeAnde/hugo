@@ -34,7 +34,9 @@ To reduce this risk to an acceptable level, I implemented an Attack Surface Redu
     * Go-based static generator.
     * Simple, text-based content makes it incredibly easy to deploy via Git.
 
-![CMMC Architecture Diagram](/gitopsflow.png)
+
+
+![Architecture Diagram]("/gitopsflow.png")
 *Figure 1: High-Level Architecture demonstrating Separation of Duties and Edge Protection.*
 
 ---
