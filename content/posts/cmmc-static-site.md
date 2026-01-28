@@ -10,7 +10,9 @@ summary: "How I architected a low-maintenance, high-security personal site."
 
 I've been wanting to make a personal blog for some time. I find them to be a unique window into the author's personality, offering a level of familiarity that is often lost on LinkedIn. I also wanted to do this the GRC Engineering way, with an eye for compliance requirements.
 
-Coming from a traditional sysadmin background, I of course went down the full stack rabbit hole, but ultimately decided on a cloud-first infrastructure:
+My professional goal is to bridge the gap between Ops and GRC Engineering. Coming from a traditional sysadmin background, I know how to build servers, but this project is about something different.
+
+I am treating this blog as a living lab to demonstrate how technical implementation (the 'How') maps directly to regulatory compliance (the 'Why'). I chose a cloud-first infrastructure not just for convenience, but to exercise specific controls around Configuration Management and Supply Chain Risk."
 
 * **Risk Context:**
 Using traditional on-premise infrastructure or dynamic Content Management Systems (CMS) creates a broad attack surface, requiring continuous patch management. Ain't nobody got time for that.
