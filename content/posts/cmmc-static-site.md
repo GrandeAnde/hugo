@@ -34,7 +34,7 @@ Sometimes less is more.  I implemented an **Attack Surface Reduction** strategy 
     * Go-based static generator.
     * Simple, text-based content makes it incredibly easy to deploy via Git.
 
-![Architecture Diagram](/images/githubci.png)
+![Architecture Diagram](/images/gitopsflow.png)
 *Figure 1: High-Level Architecture.*
 
 ---
