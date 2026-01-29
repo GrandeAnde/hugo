@@ -22,7 +22,7 @@ params:
         url: https://github.com/GrandeAnde/Portfolio
       - name: LinkedIn
         url: www.linkedin.com/in/andy-gallegos
-      - name: "My Resume
+      - name: My Resume
         url: /images/resume.pdf
 
 menu:
