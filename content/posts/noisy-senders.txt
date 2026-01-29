@@ -81,3 +81,4 @@ True compliance isn't about having the logs; it's about having the *reaction*.
 Alerts were not something meaningful and impactful.  We didn't look at inbox folder ABC and see 1200 unread emails.  We now saw 1 and immediately checked it out.  
 
 I didn't prevent the sky from falling, as much as I'd like to pretend I did.  All I did was clean up some technical debt with one afternoon playing around with Exchange Management Shell.  But it made such a large operational impact that I felt it was worth sharing. 
+
