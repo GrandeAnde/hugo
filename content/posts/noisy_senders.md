@@ -19,6 +19,8 @@ Ideally, an entire revamp of our monitoring system would be ideal.  Zabbix or Na
 
 I decided to stop clearing the inbox and start auditing it. Here is how I used PowerShell to turn noise back into signal.
 
+Huge shoutout the Embrace The Red who helped give me an organizational and operational framework that went beyond technical: https://embracethered.com/blog/posts/2025/the-normalization-of-deviance-in-ai/
+
 ## The Problem: The "Compliance" Trap
 
 The issue wasn't just annoyance; it was data integrity. When I looked at our alerts and started asking questions, I realized something.  We were qietly normalizing warning signs while progress marches forward.  In other words, past success and future progress was what we used to shape our risk tolerance.  You know things are setting up for disaster when the blinking lights are ignored.   All it takes is one really meaningful alert to sneak by to bring things down. 
