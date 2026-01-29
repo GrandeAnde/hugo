@@ -60,6 +60,9 @@ Get-ExchangeServer | Get-MessageTrackingLog -ResultSize Unlimited -EventId RECEI
     Format-Table -AutoSize
 ```
 
+[![View the full script GitHub](https://img.shields.io/badge/View_Full_Script-GitHub-black?logo=github&style=for-the-badge)](https://github.com/GrandeAnde/Portfolio/blob/main/Exchange/noisy_senders.ps1)
+
+
 ## The "Micro-Burst" Discovery
 
 My script uncovered a massive discrepancy. I found a single system generating **10 separate SMTP connections per second** to send the exact same alert to 10 different people.
