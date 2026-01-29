@@ -15,12 +15,15 @@ params:
   profileMode:
     enabled: true
     title: "Andrew S. Gallegos"
-    subtitle: "Sysadmin | GRC | Compliance-as-Code"
+    subtitle: "Senior Sysadmin ➜ GRC Engineer. Building compliant systems with automation."
     bio: "Documenting my shift from Ops to Security. Minimalist by design. Accessibility is everything."
     buttons:
       - name: GitHub
-        url: "https://github.com/YOUR_USERNAME"
-
+        url: "https://github.com/GrandeAnde/Portfolio"
+      - name = "LinkedIn"
+        url = "www.linkedin.com/in/andy-gallegos"
+      - name = "My Resume"
+        url = "/images/resume.pdf"
 menu:
   main:
     - identifier: posts
