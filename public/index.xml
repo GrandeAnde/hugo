@@ -6,10 +6,17 @@
     <description>Recent content on Andy Gallegos</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Jan 2026 10:00:00 -0500</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Building a CMMC-Ready Portfolio: A GitOps Approach</title>
+      <title>Compliance Does Not Mean Complacent: How I Silenced 83% of Our Alert Noise</title>
+      <link>http://localhost:1313/posts/noisy_senders/</link>
+      <pubDate>Thu, 29 Jan 2026 10:00:00 -0500</pubDate>
+      <guid>http://localhost:1313/posts/noisy_senders/</guid>
+      <description>How I used PowerShell to audit Exchange logs, identifying that 83% of our alert volume was technical debt masquerading as compliance.</description>
+    </item>
+    <item>
+      <title>Building a Personal Website: A GitOps Approach</title>
       <link>http://localhost:1313/posts/cmmc-static-site/</link>
       <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/cmmc-static-site/</guid>
@@ -21,6 +28,13 @@
       <pubDate>Fri, 23 Jan 2026 12:21:38 -0500</pubDate>
       <guid>http://localhost:1313/posts/hello-world/</guid>
       <description>&lt;p&gt;this is my first post.  surprise!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Resume</title>
+      <link>http://localhost:1313/resume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/resume/</guid>
+      <description>Senior Sysadmin transitioning to GRC Engineering</description>
     </item>
   </channel>
 </rss>

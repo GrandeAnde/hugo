@@ -3,12 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/azure/</loc>
-    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/automation/</loc>
+    <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2026-01-29T10:00:00-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2026-01-29T10:00:00-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/compliance/</loc>
+    <lastmod>2026-01-29T10:00:00-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/noisy_senders/</loc>
+    <lastmod>2026-01-29T10:00:00-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/engineering/</loc>
+    <lastmod>2026-01-29T10:00:00-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/exchange/</loc>
+    <lastmod>2026-01-29T10:00:00-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/grc/</loc>
+    <lastmod>2026-01-29T10:00:00-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/powershell/</loc>
+    <lastmod>2026-01-29T10:00:00-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/security-operations/</loc>
+    <lastmod>2026-01-29T10:00:00-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-01-29T10:00:00-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/azure/</loc>
     <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/cmmc-static-site/</loc>
@@ -20,15 +50,9 @@
     <loc>http://localhost:1313/tags/devops/</loc>
     <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/grc/</loc>
-    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/posts/hello-world/</loc>
     <lastmod>2026-01-23T12:21:38-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>http://localhost:1313/resume/</loc>
   </url>
 </urlset>
