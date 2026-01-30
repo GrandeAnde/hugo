@@ -23,7 +23,7 @@ This environment utilizes **GitOps** to ensure integrity. Evidence is derived di
 | ID | Control Requirement | Implementation Strategy | **Live Evidence (Proof)** |
 | :--- | :--- | :--- | :--- |
 | **3.4.1** | **Baseline Configuration** | Infrastructure is defined as Code (IaC). No manual console changes are permitted. | [📄 **View Source Config**](https://github.com/GrandeAnde/hugo/blob/main/hugo.yaml) <br> *(Links to the immutable config file)* |
-| **3.4.2** | **Enforcement** | The CI/CD pipeline acts as the Gatekeeper. Invalid configurations fail the build before deployment. | [✅ **Build History**](https://https://github.com/GrandeAnde/hugo/actions) <br> *(Proof of successful automated builds)* |
+| **3.4.2** | **Enforcement** | The CI/CD pipeline acts as the Gatekeeper. Invalid configurations fail the build before deployment. | [✅ **Build History**](https://github.com/GrandeAnde/hugo/actions) <br> *(Proof of successful automated builds)* |
 
 ### Identification & Authentication (IA)
 
