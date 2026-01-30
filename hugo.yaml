@@ -31,3 +31,7 @@ menu:
       name: Posts
       url: /posts/
       weight: 10
+    - identifier: Compliance
+      name: Compliance Matrix
+      url: /Compliance
+      weight: 10

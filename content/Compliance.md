@@ -31,5 +31,3 @@ This environment utilizes **GitOps** to ensure integrity. Evidence is derived di
 | :--- | :--- | :--- | :--- |
 | **3.5.1** | **Identification** | Administrative access requires MFA-protected GitHub Identity. No shared accounts. | [🔒 **Deployment Policy**](https://github.com/YOUR_GITHUB_USER/YOUR_REPO_NAME/blob/main/.github/workflows/azure-static-web-apps.yml) <br> *(Shows secure token injection)* |
 
----
-*Last Audit Update: {{< now.Format "2006-01-02" >}}*
