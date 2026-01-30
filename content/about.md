@@ -1,0 +1,1 @@
+"I am a SysAdmin with 8+ years of experience and a Top Secret clearance, currently pivoting into GRC Engineering. I am finishing my Master's in Cyber Security at WGU. I bridge the gap between traditional IT operations and modern compliance automation."
