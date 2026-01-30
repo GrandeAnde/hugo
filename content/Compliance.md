@@ -29,5 +29,5 @@ This environment utilizes **GitOps** to ensure integrity. Evidence is derived di
 
 | ID | Control Requirement | Implementation Strategy | **Live Evidence (Proof)** |
 | :--- | :--- | :--- | :--- |
-| **3.5.1** | **Identification** | Administrative access requires MFA-protected GitHub Identity. No shared accounts. | [🔒 **Deployment Policy**](https://github.com/GrandeAnde/blob/main/.github/workflows/azure-static-web-apps.yml) <br> *(Shows secure token injection)* |
+| **3.5.1** | **Identification** | Administrative access requires MFA-protected GitHub Identity. No shared accounts. | [🔒 **Deployment Policy**](https://github.com/GrandeAnde/hugo/blob/main/.github/workflows/azure-static-web-apps-blue-mud-03b7e110f.yml) <br> *(Shows secure token injection)* |
 
