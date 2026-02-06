@@ -1,5 +1,7 @@
 name: Azure Static Web Apps CI/CD
-
+permissions:
+  id-token: write
+  contents: read
 on:
   push:
     branches:
@@ -10,8 +12,30 @@ on:
       - main
 
 jobs:
+  # 1. THE INFRASTRUCTURE JOB
+  deploy_infrastructure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Deploy Bicep
+        uses: azure/arm-deploy@v1
+        with:
+          resourceGroupName: 'hugo-portfolio'
+          template: ./infra/main.bicep
+          # This 'failOnStdErr' helps catch Bicep errors early
+          failOnStdErr: false
+
   build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    needs: deploy_infrastructure  # <--- THIS IS THE KEY
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed') 
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
