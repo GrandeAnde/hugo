@@ -21,7 +21,8 @@ jobs:
       - name: Run Markdown Lint
         uses: davidanson/markdownlint-cli2-action@v16
 
-  # Job 2 check Bicep file for any obvious syntax errors
+  # Job 2: Check Bicep file for any obvious syntax errors
+  deploy_infrastructure:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -42,7 +43,7 @@ jobs:
           template: ./infra/main.bicep
           failOnStdErr: false
 
-  # Job 3 build Static Web App
+  # Job 3: Build Static Web App
   build_and_deploy_job:
     # This job now depends on BOTH the infrastructure and the markdown linting
     needs: [deploy_infrastructure]
@@ -68,7 +69,7 @@ jobs:
         env:
           HUGO_VERSION: "0.146.0"
 
-  # Job 3 SWA Cleanup
+  # Job 4: SWA Cleanup
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
