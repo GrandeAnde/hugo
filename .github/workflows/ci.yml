@@ -47,7 +47,7 @@ jobs:
   build_and_deploy_job:
     # This job now depends on BOTH the infrastructure and the markdown linting
     needs: [deploy_infrastructure]
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    if: github.event_name == 'push' || (github.event.name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
