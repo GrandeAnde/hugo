@@ -7,10 +7,10 @@ hidemeta: true
 disableShare: true
 ---
 
-## Andrew S. Gallegos
+## Andy Gallegos
 **Senior Sysadmin ➜ GRC Engineer**
 
-[Download PDF Version](/Andrew_Gallegos_Resume.pdf/)
+[Download PDF Version](/Andy_Gallegos_Resume.pdf)
 
 ---
 

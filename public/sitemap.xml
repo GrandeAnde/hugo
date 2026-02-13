@@ -2,61 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://andygallegos.com/</loc>
     <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/automation/</loc>
+    <loc>https://andygallegos.com/tags/automation/</loc>
     <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://andygallegos.com/posts/</loc>
     <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://andygallegos.com/categories/</loc>
     <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/compliance/</loc>
+    <loc>https://andygallegos.com/tags/compliance/</loc>
     <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/noisy_senders/</loc>
+    <loc>https://andygallegos.com/posts/noisy_senders/</loc>
     <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/engineering/</loc>
+    <loc>https://andygallegos.com/categories/engineering/</loc>
     <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/exchange/</loc>
+    <loc>https://andygallegos.com/tags/exchange/</loc>
     <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/grc/</loc>
+    <loc>https://andygallegos.com/tags/grc/</loc>
     <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/powershell/</loc>
+    <loc>https://andygallegos.com/tags/powershell/</loc>
     <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/security-operations/</loc>
+    <loc>https://andygallegos.com/categories/security-operations/</loc>
     <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://andygallegos.com/tags/</loc>
     <lastmod>2026-01-29T10:00:00-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/azure/</loc>
+    <loc>https://andygallegos.com/tags/azure/</loc>
     <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/cmmc-static-site/</loc>
+    <loc>https://andygallegos.com/posts/cmmc-static-site/</loc>
     <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cmmc/</loc>
+    <loc>https://andygallegos.com/tags/cmmc/</loc>
     <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/devops/</loc>
+    <loc>https://andygallegos.com/tags/devops/</loc>
     <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/hello-world/</loc>
+    <loc>https://andygallegos.com/posts/hello-world/</loc>
     <lastmod>2026-01-23T12:21:38-05:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://andygallegos.com/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/compliance/</loc>
+    <loc>https://andygallegos.com/compliance/</loc>
   </url><url>
-    <loc>http://localhost:1313/resume/</loc>
+    <loc>https://andygallegos.com/resume/</loc>
   </url>
 </urlset>

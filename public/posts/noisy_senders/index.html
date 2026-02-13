@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Compliance Does Not Mean Complacent: How I Silenced 83% of Our Alert Noise | Andy Gallegos</title>
 <meta name="keywords" content="PowerShell, GRC, Exchange, Automation, Compliance">
 <meta name="description" content="How I used PowerShell to audit Exchange logs, identifying that 83% of our alert volume was technical debt masquerading as compliance.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/noisy_senders/">
+<link rel="canonical" href="https://andygallegos.com/posts/noisy_senders/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://andygallegos.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://andygallegos.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://andygallegos.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://andygallegos.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://andygallegos.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/noisy_senders/">
+<link rel="alternate" hreflang="en" href="https://andygallegos.com/posts/noisy_senders/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,80 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://andygallegos.com/posts/noisy_senders/">
+  <meta property="og:site_name" content="Andy Gallegos">
+  <meta property="og:title" content="Compliance Does Not Mean Complacent: How I Silenced 83% of Our Alert Noise">
+  <meta property="og:description" content="How I used PowerShell to audit Exchange logs, identifying that 83% of our alert volume was technical debt masquerading as compliance.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-29T10:00:00-05:00">
+    <meta property="article:modified_time" content="2026-01-29T10:00:00-05:00">
+    <meta property="article:tag" content="PowerShell">
+    <meta property="article:tag" content="GRC">
+    <meta property="article:tag" content="Exchange">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Compliance">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Compliance Does Not Mean Complacent: How I Silenced 83% of Our Alert Noise">
+<meta name="twitter:description" content="How I used PowerShell to audit Exchange logs, identifying that 83% of our alert volume was technical debt masquerading as compliance.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "https://andygallegos.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Compliance Does Not Mean Complacent: How I Silenced 83% of Our Alert Noise",
+      "item": "https://andygallegos.com/posts/noisy_senders/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Compliance Does Not Mean Complacent: How I Silenced 83% of Our Alert Noise",
+  "name": "Compliance Does Not Mean Complacent: How I Silenced 83% of Our Alert Noise",
+  "description": "How I used PowerShell to audit Exchange logs, identifying that 83% of our alert volume was technical debt masquerading as compliance.",
+  "keywords": [
+    "PowerShell", "GRC", "Exchange", "Automation", "Compliance"
+  ],
+  "articleBody": "In the world of DoD contracting and high-security infrastructure, “Compliance” is mandatory. Because of this, there will often be little to no discussion about the nuances. Simply put, meeting compliance is the goal and meeting it is good enough. We log everything. We alert on everything. Because a STIG says that we must.\nI had a difficult time adjusting to this, but noise has always been a problem in any IT environment I have been a part of. Especially in our environment. “If the STIG says so, then we don’t have a say”. And so we dealt with the rules and the noise and the flooded folders and occasional errant alert storms.\nAnd this worked fine as we focused on growth, because you can fine tune things AFTER you reach your goal, right? But in the mean time, we were getting complacement and lazy. THere is simply no other way to put it. Our team was receiving hundreds of operational alerts daily - snapshots, backup notifications, service hiccups - and the volume was so high that it triggered a collective analsysis paralysis where everyone knew there were a lot of alerts but no one paid attention to them, even as we were getting slammed with them.\nBut this isn’t operational maturity. It isn’t even basic best practice and after my mailbox exploded one day, I decided to take on the task of fixing this.\nIdeally, an entire revamp of our monitoring system would be ideal. Zabbix or Nagios. Proper ITSM. But we aren’t there yet and even if we got everything we wanted today, we were still engaging in lazy bad practice. Instead of 20 services sending 100 emails, we’d have 1 server sending 200 emails.\nI decided to stop clearing the inbox and start auditing it. Here is how I used PowerShell to turn noise back into signal.\nHuge shoutout the Embrace The Red who helped give me an organizational and operational framework that went beyond technical: https://embracethered.com/blog/posts/2025/the-normalization-of-deviance-in-ai/\nThe Problem: The “Compliance” Trap The issue wasn’t just annoyance; it was data integrity. When I looked at our alerts and started asking questions, I realized something. We were qietly normalizing warning signs while progress marches forward. In other words, past success and future progress was what we used to shape our risk tolerance. You know things are setting up for disaster when the blinking lights are ignored. All it takes is one really meaningful alert to sneak by to bring things down.\n“We were qietly normalizing warning signs while progress marches forward.”\n— https://embracethered.com/blog/posts/2025/the-normalization-of-deviance-in-ai/\nThe Solution: PowerShell as an Auditor I turned to the raw Exchange Transport Logs. At first I tried looking for the sending domains with the highest count. But this only showed numbers, not behaviors.\nI wrote a PowerShell script to parse the logs, but I made a crucial architectural decision: I filtered by the RECEIVE EventID, not DELIVER.\nDELIVER tells you how many people got the email (e.g., 10 recipients = 10 logs). RECEIVE tells you how many times the device physically connected to the server. This distinction was the key to the entire investigation.\nThe Analysis Script Here is the core logic I used to audit the traffic. It groups traffic by “Sender” and “Subject” to identify the noisiest talkers, while filtering out known-good traffic.\n$StartDate = (Get-Date).AddHours(-24) $EndDate = Get-Date # Filter for RECEIVE events to spot connection volume, not email volume Get-ExchangeServer | Get-MessageTrackingLog -ResultSize Unlimited -EventId RECEIVE -Start $StartDate -End $EndDate | Where-Object { $_.Sender -like \"*@domain1.com\" } | Group-Object -Property Sender, MessageSubject | Sort-Object Count -Descending | Select-Object Count, @{Name=\"Sender\"; Expression={$_.Group[0].Sender}}, @{Name=\"Subject\"; Expression={$_.Group[0].MessageSubject}} | Format-Table -AutoSize The “Micro-Burst” Discovery My script uncovered a massive discrepancy. I found a single system generating 10 separate SMTP connections per second to send the exact same alert to 10 different people.\nI quickly realized that we were facing an architectural issue. They alerts were made to satisfy compliance, not actually alert people.\nInstead of sending one email to a Distribution List, the device was looping through a list of admins and initiating a new TCP handshake for every single one. It was effectively launching a micro-Denial of Service (DoS) attack on our own Exchange Receive Connectors every time it wanted to say “Hello.”\nBefore \u0026 After: The Data Once we identified the “looping” behaviors and the “Status Update” spam, the metrics were undeniable:\nBefore: A 24-hour window showed 600+ alerts. The team assumed the network was unstable and the servers were on fire. The Reality: My analysis proved these 600 alerts were actually just 60 unique events, inflated by poor configuration and “Reply All” logic. After: By fixing the application loops and tuning the alert thresholds (e.g., “Alert only if snapshot \u003e 72 hours”), we reduced volume by 83%. Conclusion True compliance isn’t about having the logs; it’s about having the reaction.\nAlerts were not something meaningful and impactful. We didn’t look at inbox folder ABC and see 1200 unread emails. We now saw 1 and immediately checked it out.\nI didn’t prevent the sky from falling, as much as I’d like to pretend I did. All I did was clean up some technical debt with one afternoon playing around with Exchange Management Shell. But it made such a large operational impact that I felt it was worth sharing.\n",
+  "wordCount" : "884",
+  "inLanguage": "en",
+  "datePublished": "2026-01-29T10:00:00-05:00",
+  "dateModified": "2026-01-29T10:00:00-05:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://andygallegos.com/posts/noisy_senders/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Andy Gallegos",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://andygallegos.com/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Andy Gallegos (Alt + H)">Andy Gallegos</a>
+            <a href="https://andygallegos.com/" accesskey="h" title="Andy Gallegos (Alt + H)">Andy Gallegos</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,12 +169,12 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/compliance" title="Compliance Matrix">
+                <a href="https://andygallegos.com/compliance" title="Compliance Matrix">
                     <span>Compliance Matrix</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="https://andygallegos.com/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
@@ -183,14 +250,14 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/powershell/">PowerShell</a></li>
-      <li><a href="http://localhost:1313/tags/grc/">GRC</a></li>
-      <li><a href="http://localhost:1313/tags/exchange/">Exchange</a></li>
-      <li><a href="http://localhost:1313/tags/automation/">Automation</a></li>
-      <li><a href="http://localhost:1313/tags/compliance/">Compliance</a></li>
+      <li><a href="https://andygallegos.com/tags/powershell/">PowerShell</a></li>
+      <li><a href="https://andygallegos.com/tags/grc/">GRC</a></li>
+      <li><a href="https://andygallegos.com/tags/exchange/">Exchange</a></li>
+      <li><a href="https://andygallegos.com/tags/automation/">Automation</a></li>
+      <li><a href="https://andygallegos.com/tags/compliance/">Compliance</a></li>
     </ul>
 <nav class="paginav">
-  <a class="next" href="http://localhost:1313/posts/cmmc-static-site/">
+  <a class="next" href="https://andygallegos.com/posts/cmmc-static-site/">
     <span class="title">Next »</span>
     <br>
     <span>Building a Personal Website: A GitOps Approach</span>
@@ -202,7 +269,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Andy Gallegos</a></span> · 
+        <span>&copy; 2026 <a href="https://andygallegos.com/">Andy Gallegos</a></span> · 
 
     <span>
         Powered by

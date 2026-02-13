@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Building a Personal Website: A GitOps Approach | Andy Gallegos</title>
 <meta name="keywords" content="GRC, Azure, DevOps, CMMC">
 <meta name="description" content="How I architected a low-maintenance, high-security personal site.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/cmmc-static-site/">
+<link rel="canonical" href="https://andygallegos.com/posts/cmmc-static-site/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://andygallegos.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://andygallegos.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://andygallegos.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://andygallegos.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://andygallegos.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/cmmc-static-site/">
+<link rel="alternate" hreflang="en" href="https://andygallegos.com/posts/cmmc-static-site/">
 <noscript>
     <style>
         #theme-toggle,
@@ -70,13 +70,79 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://andygallegos.com/posts/cmmc-static-site/">
+  <meta property="og:site_name" content="Andy Gallegos">
+  <meta property="og:title" content="Building a Personal Website: A GitOps Approach">
+  <meta property="og:description" content="How I architected a low-maintenance, high-security personal site.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-27T00:00:00+00:00">
+    <meta property="article:tag" content="GRC">
+    <meta property="article:tag" content="Azure">
+    <meta property="article:tag" content="DevOps">
+    <meta property="article:tag" content="CMMC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Building a Personal Website: A GitOps Approach">
+<meta name="twitter:description" content="How I architected a low-maintenance, high-security personal site.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "https://andygallegos.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Building a Personal Website: A GitOps Approach",
+      "item": "https://andygallegos.com/posts/cmmc-static-site/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Building a Personal Website: A GitOps Approach",
+  "name": "Building a Personal Website: A GitOps Approach",
+  "description": "How I architected a low-maintenance, high-security personal site.",
+  "keywords": [
+    "GRC", "Azure", "DevOps", "CMMC"
+  ],
+  "articleBody": "1. Introduction: The Objective I’ve been wanting to make a personal blog for some time. I find them to be a unique window into the author’s personality, offering a level of familiarity that is often lost on LinkedIn. I also wanted to do this the GRC Engineering way, with an eye for compliance requirements.\nMy professional goal is to bridge the gap between Ops and GRC Engineering. Coming from a traditional sysadmin background, I know how to build servers, but this project is about something different.\nI am treating this blog as a living lab to demonstrate how technical implementation (the ‘How’) maps directly to regulatory compliance (the ‘Why’). I chose a cloud-first infrastructure not just for convenience, but to exercise specific controls around Configuration Management and Supply Chain Risk.\"\nRisk Context: Using traditional on-premise infrastructure or dynamic Content Management Systems (CMS) creates a broad attack surface, requiring continuous patch management. Ain’t nobody got time for that.\nOperational Impact: If my site were to be compromised, best case scenario, someone defaces my page. Worst case scenario, someone uses my page as a vector to spread malware. Either way, my reputation as a security practitioner would take a massive hit. Simplicity is key to keeping things secure.\nMitigation Strategy: Sometimes less is more. I implemented an Attack Surface Reduction strategy by utilizing Azure PaaS (Static Web Apps) and Hugo Static Site Generator. This architecture eliminates the infrastructure vector entirely and shifts the burden of underlying infrastructure security to the Cloud Provider (thank you, Shared Responsibility Model). Integrity is enforced via GitOps, ensuring that no unauthorized changes can occur outside of the approved CI/CD pipeline.\n2. High-Level Architecture (The “System Security Plan”) Core Components Compute: Azure Static Web Apps Serverless, PaaS architecture. Easy to create and back up via Infrastructure as Code (Bicep). Edge Security: Cloudflare Provides DNS management, DDoS Protection, and TLS 1.2+ enforcement. Scalable to additional security services (WAF) if needed. Engine: Hugo Go-based static generator. Simple, text-based content makes it incredibly easy to deploy via Git. Figure 1: High-Level Architecture.\n3. Implementation Phase 1: The Secure Baseline Before writing a single line of content, I needed to establish a trusted dev environment. The integrity of the output (the website) cannot be trusted unless the input (the workstation) is trusted.\nThe Trusted Workstation (Access Control) I developed this site on a machine enforcing Least Privilege. Daily development occurs under a standard user account, with User Account Control (UAC) requiring separate administrative credentials for any system-level changes. This mitigates the risk of malicious software being executed if my standard user account were to be compromised.\nVersion Control as Audit Trail (Non-Repudiation) I initialized a Git repository to serve as the single source of truth. Every change to the site, whether infrastructure configuration or blog content, is committed with a timestamp and author attribution. This satisfies the fundamental requirement of Configuration Management: knowing exactly who changed what, and when.\nSupply Chain Risk Management (Dependencies) To manage supply chain risk, I rejected the common practice of “copying and pasting” theme files. Instead, I used Git Submodules to pinpoint an exact, immutable version of the dependency.\n# Adding the theme as a submodule to ensure integrity git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod Why this command matters:\nIntegrity: It locks the site to a specific commit hash. This prevents “upstream drift” where a theme developer’s changes could silently break the site or introduce vulnerabilities. Reproducibility: The --depth=1 flag creates a “shallow clone,” ensuring I am pulling only the necessary code artifact without the entire history. 4. Implementation Phase 2: Automated Deployment (CI/CD) As a sysadmin transitioning into DevOps workflows, I am focusing on automation. Humans should not touch production servers. To solve this, I implemented a Continuous Integration/Continuous Deployment (CI/CD) pipeline using GitHub Actions and Azure Static Web Apps.\nThe Pipeline as Gatekeeper (Change Control) I configured Azure to act as the build agent. When I push code to the main branch, a GitHub Action triggers automatically. It performs a “clean build” of the site in a temporary container. Critically, integrity is guaranteed because the connection relies on an OAuth handshake rather than manual credential handling. Azure securely provisions the deployment token directly into GitHub Secrets, meaning no keys are ever copied, pasted, or exposed to humans.\nIf the build fails: The pipeline stops. The production site remains untouched. If the build passes: The artifacts are deployed to the Azure content network. Figure 2: That’s good stuff.\nInvalid configurations are rejected before they ever reach the public.\nTroubleshooting “Dependency Hell” (Configuration Management) During the initial deployment, the pipeline failed. The build logs indicated a version mismatch: my local environment was using Hugo 0.146.0 (required by the theme), but the default Azure build agent was running 0.124.0.\nIn a traditional environment, a sysadmin might manually log into the server to upgrade the software. In a GitOps workflow, this is forbidden. Instead, I enforced the configuration via code with an updated YAML file to define the build environment.\n- name: Build And Deploy uses: Azure/static-web-apps-deploy@v1 with: app_build_command: \"hugo\" env: HUGO_VERSION: \"0.146.0\" # Enforcing the specific dependency version The GRC Takeaway: By declaring the version in the pipeline configuration, I eliminated “Configuration Drift.” The build environment is now idempotent. It will behave exactly the same way today as it will in six months, regardless of what defaults Microsoft changes in the background.\n5. Implementation Phase 3: Edge Protection (DNS \u0026 Identity) For the final layer of the architecture, I focused on System and Communications Protection (SC) by utilizing Cloudflare as the DNS provider and edge proxy.\nAvailability \u0026 DDoS Mitigation My domain registrar is Cloudflare and I configured Cloudflare to proxy all traffic before it reaches Azure. This hides the actual “Origin” IP address of the Azure resource.\nThe Sysadmin View: This solves the technical challenge of “CNAME Flattening,” allowing me to point the root domain (andygallegos.com) directly to an Azure FQDN, which standard DNS does not support. The GRC View: This acts as a shield. Cloudflare absorbs Layer 3/4 Distributed Denial of Service (DDoS) attacks at the edge, ensuring Availability (one of the three pillars of the CIA Triad) remains high even under stress. Data in Transit (Encryption) To satisfy NIST 800-171 (SC.L2-3.13.8 - Cryptographic Protection), I enforced strict TLS 1.2+ encryption.\nClient to Edge: Cloudflare enforces HTTPS for all visitors. Edge to Origin: I configured “Full (Strict)” encryption, ensuring that traffic between Cloudflare and Azure is also encrypted using a trusted CA certificate. There is no point in the transmission path where data travels in plain text. Residual Risk \u0026 Mitigation While Cloudflare protects the primary domain, the direct Azure default URL (*.azurestaticapps.net) remains publicly accessible due to the limitations of the Azure Static Web Apps “Free” tier. In a production enterprise environment, I would mitigate this by upgrading to the Standard plan and implementing IP Restrictions to whitelist only Cloudflare’s IP ranges, effectively “locking the origin.”\nDomain Validation (Identity) Before Azure would serve traffic for my domain, I had to prove ownership via a DNS TXT record. This challenge-response mechanism prevents Subdomain Takeover attacks, ensuring that only authorized administrators can bind the organization’s domain to a cloud resource.\nConclusion: The “Compliance” Audit What started as a simple portfolio project became a practical exercise in Secure Systems Engineering. By shifting from a traditional “manage the server” mindset to a “manage the code” mindset, I achieved:\nAuditable Change Management: Every modification is version-controlled and attributed. Idempotent Deployment: The infrastructure can be rebuilt instantly with identical results. Zero-Touch Production: Humans do not have write access to the live environment. This architecture demonstrates that CMMC compliance isn’t just about writing policy documents—it’s about designing systems that are secure by default.\nWhat’s Next: Disaster Recovery and Compliance Checks Disaster Recovery through Bicep: Ensuring the infrastructure is as reproducible as the code. Policy as Code: How do I make sure no one can touch my settings or my code without approval? GRC Engineering: How do I programmatically prove that this project meets specific regulatory requirements? ",
+  "wordCount" : "1334",
+  "inLanguage": "en",
+  "datePublished": "2026-01-27T00:00:00Z",
+  "dateModified": "2026-01-27T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://andygallegos.com/posts/cmmc-static-site/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Andy Gallegos",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://andygallegos.com/favicon.ico"
+    }
+  }
+}
 </script>
 </head>
 <body id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Andy Gallegos (Alt + H)">Andy Gallegos</a>
+            <a href="https://andygallegos.com/" accesskey="h" title="Andy Gallegos (Alt + H)">Andy Gallegos</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -102,12 +168,12 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/compliance" title="Compliance Matrix">
+                <a href="https://andygallegos.com/compliance" title="Compliance Matrix">
                     <span>Compliance Matrix</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="https://andygallegos.com/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
@@ -247,18 +313,18 @@ By declaring the version in the pipeline configuration, I eliminated &ldquo;Conf
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/grc/">GRC</a></li>
-      <li><a href="http://localhost:1313/tags/azure/">Azure</a></li>
-      <li><a href="http://localhost:1313/tags/devops/">DevOps</a></li>
-      <li><a href="http://localhost:1313/tags/cmmc/">CMMC</a></li>
+      <li><a href="https://andygallegos.com/tags/grc/">GRC</a></li>
+      <li><a href="https://andygallegos.com/tags/azure/">Azure</a></li>
+      <li><a href="https://andygallegos.com/tags/devops/">DevOps</a></li>
+      <li><a href="https://andygallegos.com/tags/cmmc/">CMMC</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/noisy_senders/">
+  <a class="prev" href="https://andygallegos.com/posts/noisy_senders/">
     <span class="title">« Prev</span>
     <br>
     <span>Compliance Does Not Mean Complacent: How I Silenced 83% of Our Alert Noise</span>
   </a>
-  <a class="next" href="http://localhost:1313/posts/hello-world/">
+  <a class="next" href="https://andygallegos.com/posts/hello-world/">
     <span class="title">Next »</span>
     <br>
     <span>Hello World</span>
@@ -270,7 +336,7 @@ By declaring the version in the pipeline configuration, I eliminated &ldquo;Conf
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Andy Gallegos</a></span> · 
+        <span>&copy; 2026 <a href="https://andygallegos.com/">Andy Gallegos</a></span> · 
 
     <span>
         Powered by

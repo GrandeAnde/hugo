@@ -16,7 +16,7 @@ params:
     enabled: false 
 
   homeInfoParams:
-    Title: "Andy. Gallegos"
+    Title: "Andy Gallegos"
     Content: >
       Senior Sysadmin ➜ GRC Engineer.
       
