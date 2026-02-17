@@ -1,0 +1,6 @@
+# Configuration for the markdownlint-cli2 runner
+# This file tells the linter which files to include and exclude.
+
+globs:
+  - "**/*.md"
+  - "!node_modules/**"
