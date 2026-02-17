@@ -29,8 +29,6 @@ params:
       url: "https://github.com/GrandeAnde/Portfolio"
     - name: linkedin
       url: "https://www.linkedin.com/in/andy-gallegos"
-    - name: cv
-      url: "/resume/"
 
 menu:
   main:
