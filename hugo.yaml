@@ -42,3 +42,6 @@ menu:
       name: Compliance Matrix
       url: /Compliance
       weight: 10
+      
+permalinks:
+  posts: /posts/:title/

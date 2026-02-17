@@ -119,3 +119,5 @@ try {
 catch {
     Write-Error "Provisioning failed: $_"
 }
+
+[![View the full script GitHub](https://img.shields.io/badge/View_Full_Script-GitHub-black?logo=github&style=for-the-badge)](https://github.com/GrandeAnde/Portfolio/blob/main/Azure/User_Life_Cycle/User_Onboarding_Script.ps1)
